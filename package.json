@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.7.0",
     "autoprefixer": "^9.8.4",
     "babel-loader": "^8.1.0",
     "commerce-components": "^0.1.2",
