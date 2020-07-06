@@ -1,16 +1,14 @@
 <template>
   <div class="app">
     <div class="main">
-      <div class="flex-grow bg-red-300">
-        <div class="w-1/3">
-          
-          <SvgProductLabel />
+      <div class="w-full md:w-1/2">
+        <div class="relative flex justify-center items-center">
+          <img src="./shirt.png" width="100%" />
+          <SvgProductLabel class="absolute m-auto w-1/2"/>
         </div>
       </div>
       <div class="flex-grow bg-blue-300">
-        <div class="w-1/3">
-          <SvgProductLabel />
-        </div>
+        <!-- yarn add commerce-component right here baby! -->
       </div>
     </div>
   </div>
