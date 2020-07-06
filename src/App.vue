@@ -1,16 +1,19 @@
 <template>
   <div class="app">
     <div class="main">
-      <div class="flex-grow bg-red-300">
-        <div class="w-1/3">
-          
-          <SvgProductLabel />
+      <div class="w-full md:w-1/2">
+        <div class="relative flex justify-center items-center">
+          <img src="./shirt.png" width="100%" />
+          <SvgProductLabel class="absolute m-auto w-2/3"/>
         </div>
       </div>
-      <div class="flex-grow bg-blue-300">
-        <div class="w-1/3">
-          <SvgProductLabel />
-        </div>
+      <div class="flex-grow bg-gray-900 rounded min-h-full">
+        <!-- yarn add commerce-component right here baby! -->
+        <form>
+          <button>
+            Buy now
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -28,6 +31,9 @@ export default {
 </script>
 
 <style lang="scss">
+  html, body {
+    @apply bg-black;
+  }
   .app {
     @apply flex items-center justify-center bg-black overflow-y-auto w-full;
     min-height: calc(100vh - 0rem);
