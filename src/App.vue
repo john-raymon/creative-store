@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <div class="main">
+      <div class="flex-grow bg-red-300">
+        <div class="w-1/3">
+          
+          <SvgProductLabel />
+        </div>
+      </div>
+      <div class="flex-grow bg-blue-300">
+        <div class="w-1/3">
+          <SvgProductLabel />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SvgProductLabel from '@/assets/svgs/hoveringProductLabel.svg';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    SvgProductLabel
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  .app {
+    @apply flex items-center justify-center bg-black overflow-y-auto w-full;
+    min-height: calc(100vh - 0rem);
+    .main {
+      @apply relative flex p-4 flex-col w-full m-auto max-w-lg;
+      @screen md {
+        @apply flex-row p-0;
+      }
+    }
+  }
 </style>
