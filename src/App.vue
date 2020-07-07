@@ -120,21 +120,14 @@ export default {
   },
   methods: {
     onSizeChange(e) {
-      // eslint-disable-next-line no-unused-vars
       const [optionId, variantId] = e.target.value.split(',');
-      // eslint-disable-next-line no-debugger
-      debugger;
       this.$commerce.checkout.checkVariant(this.checCheckout.id, this.checCheckout.line_items[0].id, {
         variant_id: variantId,
         option_id: optionId,
-      // eslint-disable-next-line no-unused-vars
       }).then(response => {
-        // eslint-disable-next-line no-debugger
-        debugger;
         this.checCheckout.live = response.live;
-      }).catch(() => {
-        // eslint-disable-next-line no-debugger
-        debugger;
+      }).catch((e) => {
+        console.log('error while adding variant', e);
       });
     },
     /**
@@ -153,13 +146,13 @@ export default {
           }
         })
         .then(resp => {
+            alert('Thanks for ordering! A receipt will be sent to your email!')
+            location.reload();
             // can also handle successful resp by listening to, order:success, event on <chec-payment-form>
             // https://commercejs.com/docs/api/?javascript--cjs#capture-order
             console.log('💸💸 YAY ORDER SUCCESSFUL!', resp);
         })
         .catch((err) => {
-          // eslint-disable-next-line no-debugger
-          debugger;
           let errorToAlert = '';
           const { error = {} } = err.data || {};
           if (error.type === 'validation') { // catch validation errors and update corresponding data/state
