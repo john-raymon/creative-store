@@ -7,7 +7,7 @@
           <SvgProductLabel class="absolute m-auto w-2/3"/>
         </div>
       </div>
-      <div class="w-full md:w-1/2 flex items-center rounded min-h-full py-4">
+      <div class="w-full md:w-1/2 flex items-center rounded min-h-full py-6 md:py-12">
         <chec-payment-form
           v-show="checCheckout"
           class="checForm"
@@ -74,12 +74,16 @@
           <div id="card-element"/>
 
           <div class="text-xs text-white flex justify-between">
-            <p class="text-white">
-              Shipping: {{ shippingOptionsById[formData.selectedShippingMethod] && shippingOptionsById[formData.selectedShippingMethod].price.formatted_with_code || 'Select a shipping option' }} 
-            </p>
+
 
             <p class="text-white">
-              Total: {{ checCheckout && `$${checCheckout.live.total.formatted_with_code}` }}
+              Subtotal: {{ checCheckout && `$${checCheckout.live.subtotal.formatted_with_code}` }}
+            </p>
+            <p class="text-sm text-white font-bold">
+              +
+            </p>
+            <p class="text-white">
+              Shipping: {{ shippingOptionsById[formData.selectedShippingMethod] && shippingOptionsById[formData.selectedShippingMethod].price.formatted_with_code || 'Select a shipping option' }} 
             </p>
           </div>
           <button 
