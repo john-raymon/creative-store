@@ -17,16 +17,38 @@
           :context.sync="formData"
           v-slot="{ countries, subdivisions, shippingOptions, shippingOptionsById, captureOrder }"
         >
-          <input type="email" placeholder="Email" v-model="formData.customer.email">
+
+          <label for="email" class="text-xs track-widest text-gray-600">
+            Email address for receipt:
+          </label>
+          <input id="email" type="email" placeholder="Email" v-model="formData.customer.email">
           
-          <input name="shipping-name" placeholder="Shipping name" v-model="formData.shipping.name" type="text">
-          <input name="street-address" placeholder="Shipping street" v-model="formData.shipping.street" type="text">
-          <input name="street2" placeholder="Shipping street 2" v-model="formData.shipping.street2" type="text">
-          <input name="city" placeholder="Shipping City" v-model="formData.shipping.townCity" type="text">
-          <input name="postalCode" placeholder="Shipping Zip Code" v-model="formData.shipping.postalZipCode" type="text">
+          <label for="shipping-name" class="text-xs track-widest text-gray-600">
+            Shipping name:
+          </label>
+          <input id="shipping-name" name="shipping-name" placeholder="Shipping name" v-model="formData.shipping.name" type="text">
+          
+          <label for="street-address" class="text-xs track-widest text-gray-600">
+            Street address:
+          </label>
+          <input id="street-address" name="street-address" placeholder="Shipping street" v-model="formData.shipping.street" type="text">
+          <input name="street2" class="-mt-4" placeholder="Shipping street 2" v-model="formData.shipping.street2" type="text">
+
+          <label for="city" class="text-xs track-widest text-gray-600">
+            City:
+          </label>
+          <input id="city" name="city" placeholder="Shipping City" v-model="formData.shipping.townCity" type="text">
+          
+          <label for="postalCode" class="text-xs track-widest text-gray-600">
+            Postal code:
+          </label>
+          <input id="postalCode" name="postalCode" placeholder="Shipping Zip Code" v-model="formData.shipping.postalZipCode" type="text">
 
           <!-- shipping country -->
-          <select v-model="formData.shipping.countyState">
+          <label for="shippingState" class="text-xs track-widest text-gray-600">
+            Shipping state/subdivision
+          </label>
+          <select id="shippingState" v-model="formData.shipping.countyState">
             <option value disabled selected>Select a shipping state/subdivision</option>
             <option
               v-for="(subdivision, subdivisionCode) in subdivisions"
@@ -36,8 +58,11 @@
           </select>
 
           <!-- shipping country -->
-          <select v-model="formData.shipping.country">
-            <option value disabled selected>Select a shipping method</option>
+          <label for="shippingCountry" class="text-xs track-widest text-gray-600">
+            Shipping country
+          </label>
+          <select id="shippingCountry" v-model="formData.shipping.country">
+            <option value disabled selected>Select a shipping country</option>
             <option
               v-for="(country, countryCode) in countries"
               :value="countryCode"
@@ -45,8 +70,13 @@
             >{{ country }}</option>
           </select>
 
+
+          <!-- shipping country -->
+          <label for="shippingMethod" class="text-xs track-widest text-gray-600">
+            Shipping method:
+          </label>
           <!-- shipping options -->
-          <select v-model="formData.selectedShippingMethod">
+          <select id="shippingMethod" v-model="formData.selectedShippingMethod">
             <option value disabled selected>Select a shipping method</option>
             <option
               v-for="option in shippingOptions"
@@ -56,11 +86,11 @@
           </select>
 
           <template v-if="checCheckout">
-            <p class="text-xs text-gray-500 border-top">
+            <label for="sizeVariant" class="text-xs text-gray-500 track-widest">
               Please choose a unisex size below (small, medium, large).
               The size variant button will activate once all shipping information is provided above.
-            </p>
-            <select @change="onSizeChange" :disabled="!(formData.selectedShippingMethod && formData.shipping.country && formData.shipping.countyState)">
+            </label>
+            <select id="sizeVariant" @change="onSizeChange" :disabled="!(formData.selectedShippingMethod && formData.shipping.country && formData.shipping.countyState)">
               <option value disabled selected>Select a size</option>
               <option
                 v-for="option in checCheckout.line_items[0].variants[0].options"
@@ -230,7 +260,8 @@ export default {
     @apply flex items-center justify-center bg-black overflow-y-auto w-full font-mich;
     min-height: calc(100vh - 0rem);
     .main {
-      @apply relative flex p-4 flex-col w-full m-auto max-w-xl;
+      @apply relative flex p-4 flex-col w-full m-auto;
+      max-width: 750px;
       @screen md {
         @apply flex-row p-0;
       }
