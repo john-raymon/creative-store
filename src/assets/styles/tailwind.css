@@ -2,13 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Michroma&display=swap');
 
-* {
-  font-family: lato, sans-serif;
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-smooth: always;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 h1 {
   @apply text-2xl;
 }
